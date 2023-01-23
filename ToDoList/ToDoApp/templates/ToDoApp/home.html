@@ -1,0 +1,34 @@
+{% extends "ToDoApp/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="content-section">
+    {% for todo in todo_list  %}
+    <div class="ui segment">
+        <div>
+            <p class="ui big header">{{  forloop.counter }}  
+            <a class="btn btn-info mr-4" href="{% url 'todo-detail' todo.id %}">{{ todo.title }}</a>
+        </p>
+        </div>
+
+        <article class="ui big header article-content">{{ todo.content }}</article>
+        {% if todo.complete == False %}
+        <span class="ui gray label">Not Complete</span>
+        {% else %}
+        <span class="ui green label">Completed</span>
+        {% endif %}
+        <a class="ui blue button btn btn-secondary" href="{% url 'todo-update' todo.id %}">Update</a>
+        
+        <div>
+            <p class="ui big header">{{ todo.date_posted|date:"d M, Y - G:i" }}</p>
+            
+
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+<hr>
+{% endblock content %}
