@@ -31,7 +31,10 @@ def delete(request, todo_id):
 
 """
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9f48758a9aade35f0799e1410fe760e4a0a7c8f3
 # CBV
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -66,12 +69,20 @@ class TodoDetailView(DetailView):
 
 class TodoCreateView(CreateView):
     model = Todo
+<<<<<<< HEAD
     fields = ["title", "content"]
+=======
+    fields = ["title", "complete", "content"]
+>>>>>>> 9f48758a9aade35f0799e1410fe760e4a0a7c8f3
    # success_url = '/'  <<<<------- this would redirect the browser to home page after a new post is created
 
 class TodoUpdateView(UpdateView):
     model = Todo
+<<<<<<< HEAD
     fields = ["title", "complete", "content"]
+=======
+    fields = ["title", "content"]
+>>>>>>> 9f48758a9aade35f0799e1410fe760e4a0a7c8f3
     success_url = '/'
 
 class TodoDeleteView(DeleteView):
