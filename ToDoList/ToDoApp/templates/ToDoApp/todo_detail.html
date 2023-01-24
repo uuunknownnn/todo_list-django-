@@ -1,0 +1,17 @@
+{% extends "ToDoApp/base.html" %}
+
+{% block content %}
+
+    <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <small class="text-muted">{{ object.date_posted}}</small>
+          </div>
+          <h2 class="article-title" > {{ object.title }}</h2>
+          <p class="article-content">{{ object.content }}</p>
+          <a class="ui blue button btn btn-secondary" href="{% url 'todo-update' todo.id %}">Update</a>
+        <a class="ui red button btn btn-danger" href="{% url 'todo-delete' todo.id %}">Delete</a>
+        </div>
+      </article>
+
+{% endblock content %}
