@@ -18,17 +18,26 @@
         <span class="ui green label">Completed</span>
         {% endif %}
         <a class="ui blue button btn btn-secondary" href="{% url 'todo-update' todo.id %}">Update</a>
+<<<<<<< HEAD
+        <hr>
+        <div>
+            <p class="ui big header">{{ todo.date_posted|date:"d M, Y - G:i" }}</p>
+=======
         
         <div>
             <p class="ui big header">{{ todo.date_posted|date:"d M, Y - G:i" }}</p>
             
 
+>>>>>>> 9f48758a9aade35f0799e1410fe760e4a0a7c8f3
         </div>
     </div>
     {% endfor %}
 
 </div>
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 9f48758a9aade35f0799e1410fe760e4a0a7c8f3
 <hr>
 {% endblock content %}
