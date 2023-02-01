@@ -30,13 +30,9 @@ def delete(request, todo_id):
     return redirect("home")
 
 """
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 9f48758a9aade35f0799e1410fe760e4a0a7c8f3
 # CBV
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 class TodoListView(ListView):
@@ -44,6 +40,7 @@ class TodoListView(ListView):
     template_name = 'ToDoApp/home.html'
     context_object_name = 'todo_list'
     ordering = ["-date_posted"]
+    paginate_by = 3
 
 
 #overriding the get_context_data function to add more context:
@@ -67,23 +64,22 @@ class TodoDetailView(DetailView):
                kwargs={'pk': self.pk })
 
 
-class TodoCreateView(CreateView):
+class TodoCreateView(LoginRequiredMixin, CreateView):
     model = Todo
-<<<<<<< HEAD
     fields = ["title", "content"]
-=======
-    fields = ["title", "complete", "content"]
->>>>>>> 9f48758a9aade35f0799e1410fe760e4a0a7c8f3
    # success_url = '/'  <<<<------- this would redirect the browser to home page after a new post is created
 
-class TodoUpdateView(UpdateView):
+class TodoUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Todo
-<<<<<<< HEAD
     fields = ["title", "complete", "content"]
-=======
-    fields = ["title", "content"]
->>>>>>> 9f48758a9aade35f0799e1410fe760e4a0a7c8f3
     success_url = '/'
+
+    def test_func(self):
+        todo = self.get_object()
+
+        if self.request.user:
+            return True
+        return False
 
 class TodoDeleteView(DeleteView):
     model = Todo
