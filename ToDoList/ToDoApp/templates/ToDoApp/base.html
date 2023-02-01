@@ -36,12 +36,37 @@
                       
                         <a class="nav-item nav-link" href="{% url 'todo-create' %}">Add New Task</a>
                     </div>
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="{% url 'profile' %}">My Profile</a>
+                    </div>
+
+                    {% if user.is_authenticated %}
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                    {% else %}
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                    </div>
+                    {%  endif %}
+
+                  
+                    
+
                 </div>
             </div>
         </nav>
     </header>
 
     <div style="margin-top: 50px;" class="ui container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{message}}
+                </div>
+            {% endfor %}        
+        {% endif %}
+
         <h1 class="ui center aligned header">To Do App</h1>
 
         {% block content %}
